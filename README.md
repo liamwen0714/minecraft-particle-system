@@ -4,16 +4,10 @@ Custom Minecraft particle effects built with Beet, Bolt, and Python. This projec
 
 ## Showcase
 
-Animated GIFs are the best way to showcase this project because many of the effects rely on movement, color changes, and timing.
-
-After creating GIFs, upload them into a folder named `media/`, then use links like these:
-
 ![Lotus Bloom](media/lotus-bloom.gif)
 ![Mega Firework](media/mega-firework.gif)
 ![Galaxy Spiral](media/galaxy-spiral.gif)
 ![Aurora Curtain](media/aurora-curtain.gif)
-
-If the GIFs are not uploaded yet, these images may appear broken. That is normal. Upload the GIF files later or remove this section until the media folder exists.
 
 ## Features
 
@@ -210,31 +204,6 @@ execute if score #lotus_tick timer matches 5 run scoreboard players add #lotus_p
 ```
 
 Changing `5` to `3` makes the animation faster. Changing `5` to `10` makes it slower.
-
-## Media / GIF Instructions
-
-GIFs are animated image files. They are useful for this project because the best effects move, bloom, and change color over time.
-
-To add GIFs:
-
-1. Record the Minecraft effect using a screen recorder.
-2. Export or convert the recording to a `.gif`.
-3. Create a folder in this GitHub repository named `media`.
-4. Upload the GIF files into the `media` folder.
-5. Reference them in the README like this:
-
-```md
-![Lotus Bloom](media/lotus-bloom.gif)
-```
-
-Recommended GIF names:
-
-```text
-media/lotus-bloom.gif
-media/mega-firework.gif
-media/galaxy-spiral.gif
-media/aurora-curtain.gif
-```
 
 ## What I Learned
 
