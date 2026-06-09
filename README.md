@@ -4,12 +4,16 @@ Custom Minecraft particle effects built with Beet, Bolt, and Python. This projec
 
 ## Showcase
 
-GIFs can be added to a `media/` folder and displayed here.
+Animated GIFs are the best way to showcase this project because many of the effects rely on movement, color changes, and timing.
+
+After creating GIFs, upload them into a folder named `media/`, then use links like these:
 
 ![Lotus Bloom](media/lotus-bloom.gif)
 ![Mega Firework](media/mega-firework.gif)
 ![Galaxy Spiral](media/galaxy-spiral.gif)
 ![Aurora Curtain](media/aurora-curtain.gif)
+
+If the GIFs are not uploaded yet, these images may appear broken. That is normal. Upload the GIF files later or remove this section until the media folder exists.
 
 ## Features
 
@@ -19,6 +23,7 @@ GIFs can be added to a `media/` folder and displayed here.
 - Animated color-changing effects
 - Large-scale command block particle displays
 - Beet and Bolt workflow automation
+- Effects designed for Minecraft Java Edition datapacks
 
 ## Example Effects
 
@@ -38,12 +43,18 @@ function effects:cube
 function effects:cone
 function effects:helix
 function effects:flower
-Technologies
-Minecraft Java Edition Datapack
-Beet
-Bolt
-Python
-Project Structure
+```
+
+## Technologies
+
+- Minecraft Java Edition Datapack
+- Beet
+- Bolt
+- Python
+
+## Project Structure
+
+```text
 minecraft-particle-system/
 ├── beet.json
 └── src/
@@ -51,83 +62,180 @@ minecraft-particle-system/
         └── graphics/
             └── modules/
                 └── main.bolt
-Requirements
-Before using this project, install or have access to:
+```
 
-Minecraft Java Edition
-Python
-Beet
-Bolt
+The main source file is:
+
+```text
+src/data/graphics/modules/main.bolt
+```
+
+## Requirements
+
+Before using this project, make sure you have:
+
+- Minecraft Java Edition
+- Python
+- Beet
+- Bolt
+
 You can check whether Beet is installed by running:
 
+```powershell
 beet --version
-Build Instructions
+```
+
+## Build Instructions
+
 Open a terminal in the project folder:
 
+```powershell
 cd path\to\minecraft-particle-system
+```
+
 Build the datapack:
 
+```powershell
 beet build
+```
+
 This generates the Minecraft datapack files.
 
-Link To A Minecraft World
+## Link To A Minecraft World
+
 To link the generated datapack directly to a Minecraft world, run:
 
+```powershell
 beet link "Your World Name"
 beet build
-Replace "Your World Name" with the name of your Minecraft world folder.
+```
+
+Replace `"Your World Name"` with the name of your Minecraft world folder.
 
 After building, open Minecraft and run:
 
+```mcfunction
 /reload
-Running Effects In Minecraft
+```
+
+## Running Effects In Minecraft
+
 To run an effect from chat, include the slash:
 
+```mcfunction
 /function effects:lotus_bloom
+```
+
 To run an effect inside a command block, leave off the slash:
 
+```mcfunction
 function effects:lotus_bloom
-Recommended Command Block Settings
-For animated effects, use:
+```
 
+## Recommended Command Block Settings
+
+For animated effects, use these command block settings:
+
+```text
 Repeat
 Unconditional
 Always Active
+```
+
 Good effects to try with a repeating command block:
 
+```mcfunction
 function effects:lotus_bloom
 function effects:mega_firework
 function effects:galaxy_spiral
 function effects:aurora_curtain
-For one-time burst effects, use:
+```
 
+For one-time burst effects, use these command block settings:
+
+```text
 Impulse
 Unconditional
 Needs Redstone
+```
+
 Good one-time effect:
 
+```mcfunction
 function effects:firework_burst
-Customization
+```
+
+## Customization
+
 Most effect logic is inside:
 
+```text
 src/data/graphics/modules/main.bolt
+```
+
 Common values to modify:
 
-spawn_height: changes where effects appear vertically
-radius, spread, or bloom: changes effect size
-points, steps, or rays: changes particle density
-RGB color values: changes particle color
-Timer values: changes animation speed
-Particle names: changes the particle style
+- `spawn_height`: changes where effects appear vertically
+- `radius`, `spread`, or `bloom`: changes effect size
+- `points`, `steps`, or `rays`: changes particle density
+- RGB color values: changes particle color
+- Timer values: changes animation speed
+- Particle names: changes the particle style
+
 Example dust particle color:
 
+```bolt
 particle dust{color:[1.0, 0.5, 0.2],scale:1.2} ~x ~y ~z
-RGB values range from 0.0 to 1.0.
+```
 
-Examples:
+RGB values range from `0.0` to `1.0`.
 
+Color examples:
+
+```text
 [1.0, 0.0, 0.0] = red
 [0.0, 1.0, 0.0] = green
 [0.0, 0.0, 1.0] = blue
 [1.0, 1.0, 1.0] = white
 [0.2, 0.1, 0.5] = dark purple
+[1.0, 0.6, 0.1] = orange/gold
+```
+
+For animation speed, lower timer numbers make effects faster and higher timer numbers make effects slower.
+
+Example:
+
+```bolt
+execute if score #lotus_tick timer matches 5 run scoreboard players add #lotus_phase timer 1
+```
+
+Changing `5` to `3` makes the animation faster. Changing `5` to `10` makes it slower.
+
+## Media / GIF Instructions
+
+GIFs are animated image files. They are useful for this project because the best effects move, bloom, and change color over time.
+
+To add GIFs:
+
+1. Record the Minecraft effect using a screen recorder.
+2. Export or convert the recording to a `.gif`.
+3. Create a folder in this GitHub repository named `media`.
+4. Upload the GIF files into the `media` folder.
+5. Reference them in the README like this:
+
+```md
+![Lotus Bloom](media/lotus-bloom.gif)
+```
+
+Recommended GIF names:
+
+```text
+media/lotus-bloom.gif
+media/mega-firework.gif
+media/galaxy-spiral.gif
+media/aurora-curtain.gif
+```
+
+## What I Learned
+
+This project helped me understand Minecraft datapack development, mathematical animation logic, particle systems, command block workflows, and how tools like Beet and Bolt can automate Minecraft function generation.
