@@ -1,0 +1,566 @@
+import math
+import random
+
+spawn_height = 10
+
+function effects:load:
+    scoreboard objectives add timer dummy
+
+function effects:circle1:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+        
+        radius = 5
+        x = radius * math.sin(theta)
+        y = 10
+        z = radius * math.cos(theta)
+        
+        particle flame ~x ~y ~z
+
+function effects:circle2:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+        
+        radius = 5
+        x = radius * math.sin(theta)
+        y = 10
+        z = radius * math.cos(theta)
+        
+        particle totem_of_undying ~x ~y ~z
+
+function effects:sphere1:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+
+            radius = 3
+            x = radius * math.sin(theta) * math.cos(phi)
+            y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+            z = radius * math.cos(theta)
+
+            particle cherry_leaves ~x ~y ~z
+
+function effects:sphere2:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+            r = 0.1 * i
+            g = 0.1 * i
+            b = 0.1 * i
+
+            radius = 3
+            x = radius * math.sin(theta) * math.cos(phi)
+            y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+            z = radius * math.cos(theta)
+
+            particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+function effects:sphere3:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+            r = random.randrange(1, 257) / 256
+            g = random.randrange(1, 257) / 256
+            b = random.randrange(1, 257) / 256
+
+            radius = 3
+            x = radius * math.sin(theta) * math.cos(phi)
+            y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+            z = radius * math.cos(theta)
+
+            particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+function effects:sphere4:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    r = frame / 10
+                    g = frame / 10
+                    b = frame / 10
+
+                    radius = 3
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:sphere5:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    r = frame / 10
+                    g = frame / 2
+                    b = frame / 5
+
+                    radius = 3
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:sphere6:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    radius = frame / 2
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:sphere7:
+    scoreboard players add @s timer 1  
+    for frame in range(1, 11):
+        execute if score @s timer matches frame:
+            for i in range(100):
+                theta = math.pi * i / 100
+                for j in range(100):
+                    phi = 2 * math.pi * j / 100
+                    r = frame / 10
+                    g = frame / 2
+                    b = frame / 5
+
+                    radius = frame / 2
+                    x = radius * math.sin(theta) * math.cos(phi)
+                    y = (radius * math.sin(theta) * math.sin(phi)) + spawn_height
+                    z = radius * math.cos(theta)
+
+                    particle instant_effect{color:[r, g, b]} ~x ~y ~z
+
+    execute if score @s timer matches 10 run scoreboard players set @s timer 0
+
+function effects:torus1:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+
+            radius1 = 3
+            radius2 = 3
+            x = (radius1 + radius2 * math.sin(theta)) * math.cos(phi)
+            y = ((radius1 + radius2 * math.sin(theta)) * math.sin(phi)) + spawn_height
+            z = radius1 * math.cos(theta)
+
+            particle nautilus ~x ~y ~z
+
+function effects:torus2:
+    for i in range(100):
+        theta = math.pi * i / 100
+        
+        for j in range(100):
+            phi = 2 * math.pi * j / 100
+
+            radius1 = 3
+            radius2 = 3
+            x = (radius1 + radius2 * math.sin(theta)) * math.cos(phi)
+            y = ((radius1 + radius2 * math.sin(theta)) * math.sin(phi)) + spawn_height
+            z = radius1 * math.cos(theta)
+
+            particle totem_of_undying ~x ~y ~z
+
+function effects:star:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+
+        radius = 3
+        x = radius * math.cos(theta)**3
+        y = (radius * math.sin(theta)**3) + spawn_height
+
+        particle flame ~x ~y ~
+
+function effects:cylinder:
+    for i in range(100):
+        theta = 2 * math.pi * i / 100
+
+        for j in range(20):
+            height = 0.5 * j
+            
+            radius = 3
+            x = radius * math.cos(theta)
+            y = height + spawn_height
+            z = radius * math.sin(theta)
+
+            particle shriek{delay:0} ~x ~y ~z
+
+function effects:heart:
+    for i in range(100):
+        t = 2 * math.pi / 100 * i
+        x = 16 * (math.sin(t) ** 3)
+        y = 13 * math.cos(t) - 5 * math.cos(2 * t) - 2 * math.cos(3 * t) - math.cos(4 * t) + 20
+
+        particle heart ~x ~y ~ 0 0 0 0 1 force
+
+function effects:cube:
+    size = 6
+    half = size / 2
+    steps = 40
+
+    for edge in range(12):
+        for i in range(steps + 1):
+            t = -half + size * i / steps
+
+            if edge < 4:
+                x = t
+                if edge < 2:
+                    y = spawn_height - half
+                else:
+                    y = spawn_height + half
+
+                if edge % 2 == 0:
+                    z = -half
+                else:
+                    z = half
+            elif edge < 8:
+                if edge % 2 == 0:
+                    x = -half
+                else:
+                    x = half
+
+                y = spawn_height + t
+                if edge < 6:
+                    z = -half
+                else:
+                    z = half
+            else:
+                if edge % 2 == 0:
+                    x = -half
+                else:
+                    x = half
+
+                if edge < 10:
+                    y = spawn_height - half
+                else:
+                    y = spawn_height + half
+
+                z = t
+
+            particle end_rod ~x ~y ~z
+
+function effects:cone:
+    height = 7
+    base_radius = 4
+    levels = 30
+    points = 72
+
+    for level in range(levels + 1):
+        y = spawn_height + height * level / levels
+        radius = base_radius * (1 - level / levels)
+
+        for i in range(points):
+            theta = 2 * math.pi * i / points
+            x = radius * math.cos(theta)
+            z = radius * math.sin(theta)
+
+            particle dust{color:[1.0, 0.45, 0.1],scale:1.0} ~x ~y ~z
+
+function effects:helix:
+    turns = 4
+    points = 220
+    radius = 3
+    height = 8
+
+    for i in range(points):
+        theta = 2 * math.pi * turns * i / points
+        x = radius * math.cos(theta)
+        y = spawn_height + height * i / points
+        z = radius * math.sin(theta)
+
+        particle electric_spark ~x ~y ~z
+
+function effects:flower:
+    petals = 6
+    points = 240
+
+    for i in range(points):
+        theta = 2 * math.pi * i / points
+        radius = 4 * math.sin(petals * theta / 2)
+        x = radius * math.cos(theta)
+        y = spawn_height
+        z = radius * math.sin(theta)
+
+        particle cherry_leaves ~x ~y ~z
+
+function effects:rainbow_ring:
+    points = 180
+    radius = 5
+
+    for i in range(points):
+        theta = 2 * math.pi * i / points
+        x = radius * math.cos(theta)
+        y = spawn_height + math.sin(theta * 3)
+        z = radius * math.sin(theta)
+
+        r = (math.sin(theta) + 1) / 2
+        g = (math.sin(theta + 2 * math.pi / 3) + 1) / 2
+        b = (math.sin(theta + 4 * math.pi / 3) + 1) / 2
+
+        particle dust{color:[r, g, b],scale:1.2} ~x ~y ~z
+
+function effects:double_helix:
+    turns = 5
+    points = 260
+    radius = 3
+    height = 9
+
+    for i in range(points):
+        theta = 2 * math.pi * turns * i / points
+        y = spawn_height + height * i / points
+
+        x1 = radius * math.cos(theta)
+        z1 = radius * math.sin(theta)
+        x2 = radius * math.cos(theta + math.pi)
+        z2 = radius * math.sin(theta + math.pi)
+
+        particle dust{color:[0.1, 0.8, 1.0],scale:1.0} ~x1 ~y ~z1
+        particle dust{color:[1.0, 0.2, 0.8],scale:1.0} ~x2 ~y ~z2
+
+function effects:firework_burst:
+    burst_y = spawn_height + 14
+    rays = 84
+    steps = 22
+    spread = 0.42
+    golden_angle = math.pi * (3 - math.sqrt(5))
+
+    for ray in range(rays):
+        theta = golden_angle * ray
+        phi = math.acos(1 - 2 * (ray + 0.5) / rays)
+
+        r = 1.0
+        g = 0.66
+        b = 0.12
+
+        if ray % 4 == 1:
+            r = 1.0
+            g = 0.92
+            b = 0.55
+        elif ray % 4 == 2:
+            r = 0.18
+            g = 0.78
+            b = 1.0
+        elif ray % 4 == 3:
+            r = 0.62
+            g = 0.22
+            b = 1.0
+
+        for step in range(steps):
+            distance = spread * step
+            x = distance * math.sin(phi) * math.cos(theta)
+            y = burst_y + distance * math.cos(phi)
+            z = distance * math.sin(phi) * math.sin(theta)
+
+            particle dust{color:[r, g, b],scale:1.4} ~x ~y ~z
+
+function effects:mega_firework:
+    scoreboard players add #fx_tick timer 1
+    scoreboard players add #fx_phase timer 0
+    execute if score #fx_tick timer matches 20 run scoreboard players add #fx_phase timer 1
+    execute if score #fx_tick timer matches 20 run scoreboard players set #fx_tick timer 0
+    execute if score #fx_phase timer matches 6.. run scoreboard players set #fx_phase timer 0
+    burst_y = spawn_height + 16
+    rays = 120
+    steps = 26
+    spread = 0.52
+    golden_angle = math.pi * (3 - math.sqrt(5))
+
+    for color_frame in range(6):
+        execute if score #fx_phase timer matches color_frame:
+            for ray in range(rays):
+                theta = golden_angle * ray
+                phi = math.acos(1 - 2 * (ray + 0.5) / rays)
+
+                r = 1.0
+                g = 0.66
+                b = 0.12
+
+                if color_frame == 1:
+                    r = 1.0
+                    g = 0.92
+                    b = 0.55
+                elif color_frame == 2:
+                    r = 0.95
+                    g = 0.22
+                    b = 0.08
+                elif color_frame == 3:
+                    r = 0.16
+                    g = 0.78
+                    b = 1.0
+                elif color_frame == 4:
+                    r = 0.62
+                    g = 0.18
+                    b = 1.0
+                elif color_frame == 5:
+                    r = 0.85
+                    g = 0.85
+                    b = 0.9
+
+                if ray % 9 == 0:
+                    r = 1.0
+                    g = 1.0
+                    b = 0.92
+
+                for step in range(steps):
+                    distance = spread * step
+                    x = distance * math.sin(phi) * math.cos(theta)
+                    y = burst_y + distance * math.cos(phi)
+                    z = distance * math.sin(phi) * math.sin(theta)
+
+                    particle dust{color:[r, g, b],scale:1.7} ~x ~y ~z
+
+function effects:galaxy_spiral:
+    scoreboard players add #fx_tick timer 1
+    scoreboard players add #fx_phase timer 0
+    execute if score #fx_tick timer matches 20 run scoreboard players add #fx_phase timer 1
+    execute if score #fx_tick timer matches 20 run scoreboard players set #fx_tick timer 0
+    execute if score #fx_phase timer matches 6.. run scoreboard players set #fx_phase timer 0
+    arms = 5
+    points = 130
+    galaxy_y = spawn_height + 4
+
+    for color_frame in range(6):
+        execute if score #fx_phase timer matches color_frame:
+            for arm in range(arms):
+                for i in range(points):
+                    t = 2 * math.pi * i / points
+                    distance = 0.06 * i
+                    theta = t * 2.5 + 2 * math.pi * arm / arms
+                    ripple = math.sin(t * 6 + color_frame)
+
+                    x = distance * math.cos(theta)
+                    y = galaxy_y + ripple * 0.45
+                    z = distance * math.sin(theta)
+
+                    r = 0.08
+                    g = 0.08
+                    b = 0.16
+
+                    if color_frame == 1:
+                        r = 0.28
+                        g = 0.08
+                        b = 0.52
+                    elif color_frame == 2:
+                        r = 0.08
+                        g = 0.18
+                        b = 0.85
+                    elif color_frame == 3:
+                        r = 0.38
+                        g = 0.38
+                        b = 0.46
+                    elif color_frame == 4:
+                        r = 0.85
+                        g = 0.85
+                        b = 0.95
+                    elif color_frame == 5:
+                        r = 0.46
+                        g = 0.18
+                        b = 0.78
+
+                    if i % 17 == 0:
+                        r = 0.95
+                        g = 0.95
+                        b = 1.0
+
+                    particle dust{color:[r, g, b],scale:1.15} ~x ~y ~z
+
+function effects:aurora_curtain:
+    scoreboard players add #fx_tick timer 1
+    scoreboard players add #fx_phase timer 0
+    execute if score #fx_tick timer matches 20 run scoreboard players add #fx_phase timer 1
+    execute if score #fx_tick timer matches 20 run scoreboard players set #fx_tick timer 0
+    execute if score #fx_phase timer matches 6.. run scoreboard players set #fx_phase timer 0
+    width = 18
+    height = 9
+
+    for color_frame in range(6):
+        execute if score #fx_phase timer matches color_frame:
+            for xi in range(-width, width + 1):
+                for yi in range(height):
+                    x = xi * 0.45
+                    y = spawn_height + yi * 0.55
+                    z = math.sin(x * 0.8 + yi * 0.45 + color_frame) * 2.2
+
+                    r = 0.1 + color_frame / 12
+                    g = 0.55 + 0.35 * math.sin(yi + color_frame)
+                    b = 0.75 + 0.2 * math.cos(x + color_frame)
+
+                    particle dust{color:[r, g, b],scale:1.25} ~x ~y ~z
+
+function effects:lotus_bloom:
+    scoreboard players add #lotus_tick timer 1
+    scoreboard players add #lotus_phase timer 0
+    execute if score #lotus_tick timer matches 8 run scoreboard players add #lotus_phase timer 1
+    execute if score #lotus_tick timer matches 8 run scoreboard players set #lotus_tick timer 0
+    execute if score #lotus_phase timer matches 6.. run scoreboard players set #lotus_phase timer 0
+    petals = 10
+    points = 360
+
+    for color_frame in range(6):
+        execute if score #lotus_phase timer matches color_frame:
+            bloom = 2.5 + color_frame * 0.35
+
+            for i in range(points):
+                theta = 2 * math.pi * i / points
+                radius = bloom * math.sin(petals * theta / 2)
+                x = radius * math.cos(theta)
+                y = spawn_height + math.sin(theta * petals + color_frame) * 1.2
+                z = radius * math.sin(theta)
+
+                r = 1.0
+                g = 0.25 + color_frame / 10
+                b = 0.75 + 0.2 * math.sin(theta)
+
+                particle dust{color:[r, g, b],scale:1.25} ~x ~y ~z
+
+
+function effects:butterfly:
+    points = 360
+
+    for i in range(points):
+        t = 2 * math.pi * i / points
+        scale = math.exp(math.cos(t)) - 2 * math.cos(4 * t) - math.sin(t / 12) ** 5
+
+        x = 0.7 * math.sin(t) * scale
+        y = spawn_height + 0.7 * math.cos(t) * scale
+        z = 0.5 * math.sin(2 * t)
+
+        particle dust{color:[0.9, 0.25, 1.0],scale:1.0} ~x ~y ~z
+
+function effects:wave_grid:
+    size = 8
+    spacing = 0.55
+
+    for xi in range(-size, size + 1):
+        for zi in range(-size, size + 1):
+            x = xi * spacing
+            z = zi * spacing
+            distance = math.sqrt(x * x + z * z)
+            y = spawn_height + math.sin(distance * 2) * 1.5
+
+            particle end_rod ~x ~y ~z
