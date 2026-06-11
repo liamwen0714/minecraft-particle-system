@@ -1,13 +1,29 @@
 # minecraft-particle-system
 
-Custom Minecraft particle effects built with Beet, Bolt, and Python. This project uses parametric equations, animated timers, and Minecraft datapack functions to create visual particle effects such as fireworks, spirals, blooms, waves, and other geometric shapes.
+Custom Minecraft particle effects built with Beet, Bolt, and Python. This project uses parametric equations, animated timers, and Minecraft datapack functions to create visual effects such as fireworks, spirals, blooms, waves, and geometric particle shapes.
 
 ## Showcase
 
-![Lotus Bloom](media/lotus-bloom.gif)
-![Mega Firework](media/mega-firework.gif)
-![Galaxy Spiral](media/galaxy-spiral.gif)
-![Aurora Curtain](media/aurora-curtain.gif)
+### Lotus Bloom
+![Lotus Bloom](Minecraft%20gifs/lotus_bloom.gif)
+
+### Aurora Curtain
+![Aurora Curtain](Minecraft%20gifs/aurora_curtain.gif)
+
+### Firework Burst
+![Firework Burst](Minecraft%20gifs/firework_burst.gif)
+
+### Mega Firework
+![Mega Firework](Minecraft%20gifs/mega_firework.gif)
+
+### Galaxy Spiral
+![Galaxy Spiral](Minecraft%20gifs/galaxy_spiral.gif)
+
+### Rainbow Ring
+![Rainbow Ring](Minecraft%20gifs/rainbow_ring.gif)
+
+### Flower
+![Flower](Minecraft%20gifs/flower.gif)
 
 ## Features
 
@@ -21,22 +37,36 @@ Custom Minecraft particle effects built with Beet, Bolt, and Python. This projec
 
 ## Example Effects
 
-Some included functions:
+All included functions:
 
 ```mcfunction
-function effects:lotus_bloom
-function effects:mega_firework
-function effects:firework_burst
-function effects:galaxy_spiral
-function effects:aurora_curtain
-function effects:double_helix
-function effects:rainbow_ring
-function effects:butterfly
-function effects:wave_grid
+function effects:circle1
+function effects:circle2
+function effects:sphere1
+function effects:sphere2
+function effects:sphere3
+function effects:sphere4
+function effects:sphere5
+function effects:sphere6
+function effects:sphere7
+function effects:torus1
+function effects:torus2
+function effects:star
+function effects:cylinder
+function effects:heart
 function effects:cube
 function effects:cone
 function effects:helix
 function effects:flower
+function effects:rainbow_ring
+function effects:double_helix
+function effects:firework_burst
+function effects:mega_firework
+function effects:galaxy_spiral
+function effects:aurora_curtain
+function effects:lotus_bloom
+function effects:butterfly
+function effects:wave_grid
 ```
 
 ## Technologies
@@ -51,6 +81,14 @@ function effects:flower
 ```text
 minecraft-particle-system/
 ├── beet.json
+├── Minecraft gifs/
+│   ├── lotus_bloom.gif
+│   ├── aurora_curtain.gif
+│   ├── firework_burst.gif
+│   ├── mega_firework.gif
+│   ├── galaxy_spiral.gif
+│   ├── rainbow_ring.gif
+│   └── flower.gif
 └── src/
     └── data/
         └── graphics/
@@ -143,6 +181,8 @@ function effects:lotus_bloom
 function effects:mega_firework
 function effects:galaxy_spiral
 function effects:aurora_curtain
+function effects:rainbow_ring
+function effects:flower
 ```
 
 For one-time burst effects, use these command block settings:
